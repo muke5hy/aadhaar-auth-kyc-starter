@@ -9,24 +9,31 @@ import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 
 public class HttpClientHelper {
-	
-	public static void acceptAllCertificates() {
+
+  public static void acceptAllCertificates() {
 
 // Create a trust manager that does not validate certificate chains
-		TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager(){
-			public X509Certificate[] getAcceptedIssuers(){return null;}
-			public void checkClientTrusted(X509Certificate[] certs, String authType){}
-			public void checkServerTrusted(X509Certificate[] certs, String authType){}
-		}};
+    TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+      public X509Certificate[] getAcceptedIssuers() {
+        return null;
+      }
+
+      public void checkClientTrusted(X509Certificate[] certs, String authType) {
+      }
+
+      public void checkServerTrusted(X509Certificate[] certs, String authType) {
+      }
+    }};
 
 // Install the all-trusting trust manager
-		try {
-			SSLContext sc = SSLContext.getInstance("TLS");
-			sc.init(null, trustAllCerts, new SecureRandom());
-			HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-		} catch (Exception e) {
-			;
-		}
-	}
-	
+    try {
+      SSLContext sc = SSLContext.getInstance("SSL");
+      sc.init(null, trustAllCerts, new SecureRandom());
+      HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+      HttpsURLConnection.setDefaultHostnameVerifier((s, sslSession) -> true);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
 }

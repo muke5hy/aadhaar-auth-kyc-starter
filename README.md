@@ -58,12 +58,12 @@ another one for testing. We use Spring Profiles in combination with Boot feature
 loading properties files by naming convention (application-*\<profile name\>*.properties).
 
 You can find the profile constants in 
-[StarterProfiles](src/main/java/com/dlizarra/starter/StarterProfiles.java) 
+[StarterProfiles](src/main/java/com/aadhar/StarterProfiles.java) 
 and the properties files in `src/main/resources`.
 
 ### Database
 The database connections are configured in 
-[DatabaseConfig](src/main/java/com/dlizarra/starter/DatabaseConfig.java)
+[DatabaseConfig](src/main/java/com/aadhar/DatabaseConfig.java)
 where we can find a working H2 embedded database connection for the default profile, and the staging and production configurations examples for working with an external database.
 
 ### Repository layer
@@ -79,7 +79,7 @@ All the boilerplate for the initial Spring Security configuration is already cre
 - [User](src/main/java/com/dlizarra/starter/user/User.java), [Role](src/main/java/com/dlizarra/starter/role/Role.java) and  [RoleName](src/main/java/com/dlizarra/starter/role/RoleName.java) which are populated by [data.sql](src/main/resources/data.sql) file for the default profile only.
 - [CustomUserDetails](src/main/java/com/dlizarra/starter/support/security/CustomUserDetails.java)
 - [CustomUserDetailsService](src/main/java/com/dlizarra/starter/support/security/CustomUserDetailsService.java)
-- [SecurityConfig](src/main/java/com/dlizarra/starter/SecurityConfig.java) with just very basic security rules.
+- [SecurityConfig](src/main/java/com/aadhar/SecurityConfig.java) with just very basic security rules.
 
 ### DTO-Entity mapping
 The project includes Orika and it already has a class, [OrikaBeanMapper](src/main/java/com/dlizarra/starter/support/orika/OrikaBeanMapper.java), ready to be injected anywhere and be used to do any mapping. It will also scan the project on startup searching for custom mappers and components.

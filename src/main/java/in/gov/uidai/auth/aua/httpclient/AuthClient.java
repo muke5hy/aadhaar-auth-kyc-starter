@@ -41,9 +41,6 @@ import in.gov.uidai.authentication.uid_auth_request._1.UsesFlag;
 import in.gov.uidai.authentication.uid_auth_response._1.AuthRes;
 import in.gov.uidai.authentication.uid_auth_response._1.AuthResult;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.xml.sax.InputSource;
@@ -59,7 +56,6 @@ import javax.xml.namespace.QName;
 import javax.xml.transform.sax.SAXSource;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.net.InetAddress;
 import java.net.URI;
 
 /**
@@ -67,7 +63,7 @@ import java.net.URI;
  * UIDAI Auth Server, and to get the response back.  Given an <code>Auth</code> object, this
  * class (@see {@link AuthClient#authenticate}) will convert it to XML string, then,
  * digitally sign it, and submit it to UIDAI Auth Server using HTTP POST message.  After,
- * receiving the resonse, this class converts the response XML into authentication response
+ * receiving the response, this class converts the response XML into authentication response
  *
  * @author UIDAI
  * @see AuthRes object
@@ -99,8 +95,6 @@ public class AuthClient {
 
     try {
       String signedXML = generateSignedAuthXML(auth);
-      System.out.println(signedXML);
-
 
       String uriString = authServerURI.toString() + (authServerURI.toString().endsWith("/") ? "" : "/")
           + auth.getAc() + "/" + auth.getUid().charAt(0) + "/" + auth.getUid().charAt(1);
@@ -113,20 +107,17 @@ public class AuthClient {
 
       RestTemplate restTemplate = new RestTemplate();
 
-      HttpHeaders headers = new HttpHeaders();
-      headers.setContentType(MediaType.APPLICATION_XML);
-      headers.add("REMOTE_ADDR", InetAddress.getLocalHost().getHostAddress());
+      restTemplate.getInterceptors().add((httpRequest, bytes, clientHttpRequestExecution) -> {
+        httpRequest.getHeaders().clear();
+        httpRequest.getHeaders().add("REMOTE_ADDR", "127.0.0.1");
+        return clientHttpRequestExecution.execute(httpRequest, bytes);
+      });
 
-      HttpEntity<String> request = new HttpEntity<>(signedXML, headers);
-
-      ResponseEntity<String> responseEntity = restTemplate.postForEntity(authServiceURI, request, String.class);
+      ResponseEntity<String> responseEntity = restTemplate.postForEntity(authServiceURI, signedXML, String.class);
 
       String responseXML = responseEntity.getBody();
 
-      System.out.println(responseXML);
-
       return new AuthResponseDetails(responseXML, parseAuthResponseXML(responseXML));
-
     } catch (Exception e) {
       e.printStackTrace();
       throw new RuntimeException("Exception during authentication " + e.getMessage(), e);

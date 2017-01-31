@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../style/style.css'
+import AuthForm from './authForm';
 
 ReactDOM.render(
-	<h1 className="testblue">App working</h1>,
-	document.querySelector('.container'));
+    <AuthForm />,
+    document.querySelector('.container')
+);

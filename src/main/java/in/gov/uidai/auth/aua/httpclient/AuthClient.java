@@ -194,13 +194,13 @@ public class AuthClient {
       //String authServerURL = "http://auth.uidai.gov.in/1.6";
       String asaLicenseKey = "MBFWjkJHNF-fLidl8oOHtUwgL5p1ZjDbWrqsMEVEJLVEDpnlNj_CZTg";
 //			String asaLicenseKey = "MH4hSkrev2h_Feu0lBRC8NI-iqzT299_qPSSstOFbNFTwWrie29ThDo";
-      DigitalSigner ds = new DigitalSigner("/Users/sriramviswanathan/everychildinschool/childportalparent/AadharHelper/Staging_Signature_PrivateKey.p12", "public".toCharArray(), "public");
+      DigitalSigner ds = new DigitalSigner(getFileFromResource("Staging_Signature_PrivateKey.p12"), "public".toCharArray(), "public");
 
       //AuthClient authClient = new AuthClient(new URL(authServerURL).toURI());
       this.setAsaLicenseKey(asaLicenseKey);
       this.setDigitalSignator(ds);
 
-      AuthAUADataCreator auaDataCreator = new AuthAUADataCreator(new Encrypter("/Users/sriramviswanathan/everychildinschool/childportalparent/AadharHelper/uidai_auth_stage.cer"), true);
+      AuthAUADataCreator auaDataCreator = new AuthAUADataCreator(new Encrypter(getFileFromResource("uidai_auth_stage.cer")), true);
       Meta deviceMetaData = new Meta();
       deviceMetaData.setFdc("NC");
       deviceMetaData.setIdc("NA");
@@ -256,5 +256,8 @@ public class AuthClient {
 
     return result;
   }
-
+  
+  private String getFileFromResource(String fileName) {
+    return this.getClass().getClassLoader().getResource(fileName).getFile();
+  }
 }

@@ -7,11 +7,11 @@ class AuthForm extends React.Component {
     super(props);
     this.state = {
       form: {
-        uid: "",
+        uid: "00",
         name: "",
-        matchingStrategy: "E",
-        nameMatchValue: 100,
-        gender: "Male",
+        matchingStrategy: "",
+        nameMatchValue: 0,
+        gender: "",
         fullAddress: ""
       }
     };

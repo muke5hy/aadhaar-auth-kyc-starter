@@ -12,7 +12,7 @@ public class AuthClientTest {
 
   @Test
   public void testAuthenticationName(){
-    String authServerURL = "http://core.uidai.gov.in/1.6";
+    String authServerURL = "http://auth.uidai.gov.in/1.6";
     try {
       AuthClient authClient = new AuthClient(new URL(authServerURL).toURI());
 
@@ -36,7 +36,7 @@ public class AuthClientTest {
 
   @Test
   public void testAuthenticationNameNegative(){
-    String authServerURL = "http://core.uidai.gov.in/1.6";
+    String authServerURL = "http://auth.uidai.gov.in/1.6";
     try {
       AuthClient authClient = new AuthClient(new URL(authServerURL).toURI());
 
@@ -60,7 +60,7 @@ public class AuthClientTest {
 
   @Test
   public void testAuthenticationDoB(){
-    String authServerURL = "http://core.uidai.gov.in/1.6";
+    String authServerURL = "http://auth.uidai.gov.in/1.6";
     try {
       AuthClient authClient = new AuthClient(new URL(authServerURL).toURI());
 
@@ -86,7 +86,7 @@ public class AuthClientTest {
 
   @Test
   public void testAuthenticationEmail(){
-    String authServerURL = "http://core.uidai.gov.in/1.6";
+    String authServerURL = "http://auth.uidai.gov.in/1.6";
     try {
       AuthClient authClient = new AuthClient(new URL(authServerURL).toURI());
 
@@ -111,7 +111,7 @@ public class AuthClientTest {
 
   @Test
   public void testAuthenticationPincode(){
-    String authServerURL = "http://core.uidai.gov.in/1.6";
+    String authServerURL = "http://auth.uidai.gov.in/1.6";
     try {
       AuthClient authClient = new AuthClient(new URL(authServerURL).toURI());
 
@@ -136,7 +136,7 @@ public class AuthClientTest {
 
   @Test
   public void testAuthenticationAddress1(){
-    String authServerURL = "http://core.uidai.gov.in/1.6";
+    String authServerURL = "http://auth.uidai.gov.in/1.6";
     try {
       AuthClient authClient = new AuthClient(new URL(authServerURL).toURI());
 

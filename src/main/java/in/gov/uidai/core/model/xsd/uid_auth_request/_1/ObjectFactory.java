@@ -31,7 +31,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Auth_QNAME = new QName("http://www.uidai.gov.in/authentication/uid-core-request/1.0", "Auth");
+    private final static QName _Auth_QNAME = new QName("http://www.uidai.gov.in/authentication/uid-auth-request/1.0", "Auth");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: in.gov.uidai.authentication.uid_auth_request._1
@@ -84,7 +84,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Auth }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.uidai.gov.in/authentication/uid-core-request/1.0", name = "Auth")
+    @XmlElementDecl(namespace = "http://www.uidai.gov.in/authentication/uid-auth-request/1.0", name = "Auth")
     public JAXBElement<Auth> createAuth(Auth value) {
         return new JAXBElement<Auth>(_Auth_QNAME, Auth.class, null, value);
     }

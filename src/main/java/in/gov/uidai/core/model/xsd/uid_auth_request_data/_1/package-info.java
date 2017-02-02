@@ -5,5 +5,5 @@
 // Generated on: 2015.06.03 at 08:09:15 PM IST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.uidai.gov.in/authentication/uid-core-request-data/1.0")
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.uidai.gov.in/authentication/uid-auth-request-data/1.0")
 package in.gov.uidai.core.model.xsd.uid_auth_request_data._1;

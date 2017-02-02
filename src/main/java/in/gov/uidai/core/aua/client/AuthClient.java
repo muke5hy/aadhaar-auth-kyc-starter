@@ -116,7 +116,7 @@ public class AuthClient {
     StringWriter authXML = new StringWriter();
 
     JAXBElement authElement = new JAXBElement(new QName(
-        "http://www.uidai.gov.in/authentication/uid-core-request/1.0", "Auth"), Auth.class, auth);
+        "http://www.uidai.gov.in/authentication/uid-auth-request/1.0", "Auth"), Auth.class, auth);
 
     JAXBContext.newInstance(Auth.class).createMarshaller().marshal(authElement, authXML);
     boolean includeKeyInfo = true;
@@ -140,7 +140,7 @@ public class AuthClient {
       reader = XMLReaderFactory.createXMLReader();
 
       //Create the filter (to add namespace) and set the xmlReader as its parent.
-      NamespaceFilter inFilter = new NamespaceFilter("http://www.uidai.gov.in/authentication/uid-core-response/1.0", true);
+      NamespaceFilter inFilter = new NamespaceFilter("http://www.uidai.gov.in/authentication/uid-auth-response/1.0", true);
       inFilter.setParent(reader);
 
       //Prepare the input, in this case a java.io.File (output)

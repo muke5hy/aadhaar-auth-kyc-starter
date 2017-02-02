@@ -24,11 +24,12 @@
  ******************************************************************************/
 package in.gov.uidai.core.aua.client;
 
+import in.gov.uidai.core.aua.helper.AadhaarConstants;
+import in.gov.uidai.core.aua.helper.DigitalSigner;
+import in.gov.uidai.core.device.model.BfdResponseDetails;
 import in.gov.uidai.core.model.xsd.uid_auth_response._1.AuthRes;
 import in.gov.uidai.core.model.xsd.uid_bfd_request._1.Bfd;
 import in.gov.uidai.core.model.xsd.uid_bfd_response._1.BfdRes;
-import in.gov.uidai.core.aua.helper.DigitalSigner;
-import in.gov.uidai.core.device.model.BfdResponseDetails;
 import org.apache.commons.lang3.StringUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -66,9 +67,9 @@ public class BfdClient {
 
 	public BfdClient(URI bfdServerURI) {
 		this.bfdServerURI = bfdServerURI;
+		this.asaLicenseKey = AadhaarConstants.asaLicenseKey;
+		this.digitalSignator = AadhaarConstants.digitalSigner;
 	}
-	
-	
 	
 	public BfdResponseDetails performBfd(Bfd bfd) {
 		try {

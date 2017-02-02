@@ -1,8 +1,8 @@
 package com.aadhar.service;
 
 import com.aadhar.resource.AuthRequestData;
-import in.gov.uidai.auth.aua.httpclient.AuthClient;
-import in.gov.uidai.auth.device.model.DeviceCollectedAuthData;
+import in.gov.uidai.core.aua.client.AuthClient;
+import in.gov.uidai.core.device.model.DeviceCollectedAuthData;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
@@ -15,7 +15,7 @@ public class AuthService {
   private final AuthClient authClient;
 
   public AuthService() throws MalformedURLException, URISyntaxException {
-    String authServerURL = "http://auth.uidai.gov.in/1.6";
+    String authServerURL = "http://core.uidai.gov.in/1.6";
     authClient = new AuthClient(new URL(authServerURL).toURI());
   }
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.uidai.gov.in/authentication/uid-bfd-request/1.0"
+	xmlns:tns="http://www.uidai.gov.in/authentication/uid-bfd-request/1.0"
+	elementFormDefault="qualified"
+	xmlns:ar="http://www.uidai.gov.in/authentication/uid-bfd-request-data/1.0"
+	xmlns:common="http://www.uidai.gov.in/authentication/common/types/1.0">
+
+	<xs:import namespace="http://www.uidai.gov.in/authentication/common/types/1.0"
+		schemaLocation="common-types.xsd" />
+
+	<xs:complexType name="Skey">
+		<xs:simpleContent>
+			<xs:extension base="xs:base64Binary">
+				<xs:attribute name="ci" type="xs:string" use="required">
+				</xs:attribute>
+				<xs:attribute name="ki" type="xs:string" use="optional">
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="DataType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="X"></xs:enumeration>
+			<xs:enumeration value="P"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:complexType name="Bfd">
+		<xs:sequence>
+			<xs:element name="Meta" type="common:Meta">
+			</xs:element>
+			<xs:element name="Skey" type="tns:Skey">
+			</xs:element>
+			<xs:element name="Data">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:base64Binary">
+							<xs:attribute name="type" type="tns:DataType"
+								default="X" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Hmac" type="xs:base64Binary" minOccurs="0">
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="uid" type="common:uid" use="required">
+		</xs:attribute>
+		<xs:attribute name="ac" type="common:AuaCode" use="required">
+		</xs:attribute>
+		<xs:attribute name="tid" type="common:Tid" use="required">
+		</xs:attribute>
+		<xs:attribute name="ver" type="common:Ver">
+		</xs:attribute>
+		<xs:attribute name="txn" type="common:Txn" use="required">
+		</xs:attribute>
+		<xs:attribute name="lk" type="common:LicenseKey" use="required">
+		</xs:attribute>
+		<xs:attribute name="sa" type="common:AuaCode" use="required">
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:element name="Bfd" type="tns:Bfd"></xs:element>
+	
+</xs:schema>

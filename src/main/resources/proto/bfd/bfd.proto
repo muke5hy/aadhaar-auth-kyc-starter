@@ -1,0 +1,32 @@
+package in.gov.uidai.bfdserver.protobuf;
+
+message Rbd {
+	required string ver = 1;
+	required string ts = 2;
+	required BfdBios bios = 4;
+}
+
+message BfdBios {
+	repeated BfdBio bio = 1;
+};
+
+message BfdBio {
+	required int32 nfiq = 1;
+	required int32 na = 2;
+	required FingerPosition pos = 3;
+	required bytes content = 4;
+}
+
+enum FingerPosition {
+	LEFT_INDEX = 1;
+	LEFT_LITTLE = 2;
+	LEFT_MIDDLE = 3;
+	LEFT_RING = 4;
+	LEFT_THUMB = 5;
+	RIGHT_INDEX = 6;
+	RIGHT_LITTLE = 7;
+	RIGHT_MIDDLE = 8;
+	RIGHT_RING = 9;
+	RIGHT_THUMB = 10;
+	UNKNOWN = 11;
+}

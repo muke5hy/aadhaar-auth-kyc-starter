@@ -1,6 +1,6 @@
 package com.aadhar.resource;
 
-import in.gov.uidai.authentication.uid_auth_request_data._1.MatchingStrategy;
+import in.gov.uidai.core.model.xsd.uid_auth_request_data._1.MatchingStrategy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

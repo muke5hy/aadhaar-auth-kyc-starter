@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.uidai.gov.in/authentication/uid-bfd-request-data/1.0"
+	xmlns:tns="http://www.uidai.gov.in/authentication/uid-bfd-request-data/1.0" elementFormDefault="qualified"
+	xmlns:common="http://www.uidai.gov.in/authentication/common/types/1.0">
+
+	<xs:import namespace="http://www.uidai.gov.in/authentication/common/types/1.0" schemaLocation="common-types.xsd" />
+
+	<xs:simpleType name="Nfiq">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"></xs:minInclusive>
+			<xs:maxInclusive value="5"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="BfdBio">
+		<xs:simpleContent>
+			<xs:extension base="xs:base64Binary">
+				<xs:attribute name="nfiq" type="tns:Nfiq"></xs:attribute>
+				<xs:attribute name="na" type="xs:int"></xs:attribute>
+				<xs:attribute name="pos" type="common:FingerPosition" use="required">
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="BfdBios">
+		<xs:sequence>
+			<xs:element name="Bio" type="tns:BfdBio" minOccurs="1" maxOccurs="10"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="Rbd">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Bios" type="tns:BfdBios" />
+			</xs:sequence>
+			<xs:attribute name="ts" type="xs:dateTime" use="required">
+			</xs:attribute>
+			<xs:attribute name="ver" type="xs:string" use="required">
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

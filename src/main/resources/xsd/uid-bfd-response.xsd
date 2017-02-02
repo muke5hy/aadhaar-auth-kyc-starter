@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.uidai.gov.in/authentication/uid-bfd-response/1.0"
+	xmlns:tns="http://www.uidai.gov.in/authentication/uid-bfd-response/1.0" elementFormDefault="qualified"
+	xmlns:common="http://www.uidai.gov.in/authentication/common/types/1.0">
+
+	<xs:import namespace="http://www.uidai.gov.in/authentication/common/types/1.0" 
+		schemaLocation="common-types.xsd" />
+
+	<xs:simpleType name="Actn">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="00"></xs:enumeration>
+			<xs:enumeration value="01"></xs:enumeration>
+			<xs:enumeration value="02"></xs:enumeration>
+			<xs:enumeration value="03"></xs:enumeration>
+			<xs:enumeration value="04"></xs:enumeration>
+			<xs:enumeration value="99"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+
+	<xs:element name="Ranks">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:Rank" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Rank">
+		<xs:complexType>
+			<xs:attribute name="clr" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="G" />
+						<xs:enumeration value="Y" />
+						<xs:enumeration value="R" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="val" type="xs:integer"></xs:attribute>
+			<xs:attribute name="pos" use="required" type="common:FingerPosition">
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="BfdRes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:Ranks" />
+			</xs:sequence>
+			<xs:attribute name="code" use="required" type="xs:string"/>
+			<xs:attribute name="txn" use="required" type="common:Txn" />
+			<xs:attribute name="err" type="xs:string" />
+			<xs:attribute name="ts" type="xs:dateTime" />
+			<xs:attribute name="actn" type="tns:Actn" />
+			<xs:attribute name="msg" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

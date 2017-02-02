@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DISCLAIMER: The sample code or utility or tool described herein
+     is provided on an "as is" basis, without warranty of any kind.
+     UIDAI does not warrant or guarantee the individual success
+     developers may have in implementing the sample code on their
+     environment. 
+     
+     UIDAI does not warrant, guarantee or make any representations
+     of any kind with respect to the sample code and does not make
+     any representations or warranties regarding the use, results
+     of use, accuracy, timeliness or completeness of any data or
+     information relating to the sample code. UIDAI disclaims all
+     warranties, express or implied, and in particular, disclaims
+     all warranties of merchantability, fitness for a particular
+     purpose, and warranties related to the code, or any service
+     or software related thereto. 
+     
+     UIDAI is not responsible for and shall not be liable directly
+     or indirectly for any direct, indirect damages or costs of any
+     type arising out of use or any action taken by you or others
+     related to the sample code.
+     
+     THIS IS NOT A SUPPORTED SOFTWARE.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.uidai.gov.in/authentication/uid-auth-request-data/1.0"
+	xmlns:tns="http://www.uidai.gov.in/authentication/uid-auth-request-data/1.0"
+	elementFormDefault="unqualified"
+	xmlns:common="http://www.uidai.gov.in/authentication/common/types/1.0">
+
+	<xs:import namespace="http://www.uidai.gov.in/authentication/common/types/1.0"
+		schemaLocation="common-types.xsd" />
+
+	<xs:simpleType name="matchingStrategy">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="E" />
+			<xs:enumeration value="P" />
+			<xs:enumeration value="F" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="gender">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="M" />
+			<xs:enumeration value="F" />
+			<xs:enumeration value="T" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="Pi">
+		<xs:attribute name="ms" type="tns:matchingStrategy"	default="E" />
+		<xs:attribute name="mv" type="xs:int" default="100" />
+		<xs:attribute name="name">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="99"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="lmv" type="xs:int" />
+		<xs:attribute name="lname">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="99"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="gender" type="tns:gender" />
+		<xs:attribute name="dob">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="10"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="dobt">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="A"></xs:enumeration>
+					<xs:enumeration value="V"></xs:enumeration>
+					<xs:enumeration value="D"></xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="age" type="xs:int" />
+		<xs:attribute name="phone">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="18"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="email">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="254"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="Pa">
+		<xs:attribute name="ms" type="tns:matchingStrategy"	default="E" />
+		<xs:attribute name="co">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="house">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="street">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="lm">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="loc">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="vtc">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="po">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="subdist">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="dist">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="state">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="100"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="pc">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="6"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+
+	<xs:complexType name="Pfa">
+		<xs:attribute name="mv" type="xs:int" default="100" />
+		<xs:attribute name="ms" type="tns:matchingStrategy"	default="E" />
+		<xs:attribute name="av">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="1024"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="lmv" type="xs:int" />
+		<xs:attribute name="lav">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="1024"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="Demo">
+		<xs:sequence>
+			<xs:element type="tns:Pi" name="Pi" minOccurs="0"></xs:element>
+			<xs:element type="tns:Pa" name="Pa" minOccurs="0"></xs:element>
+			<xs:element type="tns:Pfa" name="Pfa" minOccurs="0"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="lang" type="xs:string" default="23"></xs:attribute>
+	</xs:complexType>
+
+	<xs:simpleType name="bioMetricType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FMR" />
+			<xs:enumeration value="FIR" />
+			<xs:enumeration value="IIR" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="BiometricPosition">
+	   <xs:restriction base="xs:string">
+	        <xs:enumeration value="LEFT_IRIS"></xs:enumeration>
+	        <xs:enumeration value="RIGHT_IRIS"></xs:enumeration>
+
+	        <xs:enumeration value="LEFT_INDEX"></xs:enumeration>
+	        <xs:enumeration value="LEFT_LITTLE"></xs:enumeration>
+	        <xs:enumeration value="LEFT_MIDDLE"></xs:enumeration>
+	        <xs:enumeration value="LEFT_RING"></xs:enumeration>
+	        <xs:enumeration value="LEFT_THUMB"></xs:enumeration>
+
+	        <xs:enumeration value="RIGHT_INDEX"></xs:enumeration>
+	        <xs:enumeration value="RIGHT_LITTLE"></xs:enumeration>
+	        <xs:enumeration value="RIGHT_MIDDLE"></xs:enumeration>
+	        <xs:enumeration value="RIGHT_RING"></xs:enumeration>
+	        <xs:enumeration value="RIGHT_THUMB"></xs:enumeration>
+	        
+	        <xs:enumeration value="UNKNOWN"></xs:enumeration>
+	   </xs:restriction>     
+	</xs:simpleType>
+
+     <xs:complexType name="Bio">
+          <xs:simpleContent>
+               <xs:extension base="xs:base64Binary">
+                    <xs:attribute name="type" type="tns:bioMetricType" use="required" />
+                    <xs:attribute name="posh" type="tns:BiometricPosition" use="required" />
+               </xs:extension>
+          </xs:simpleContent>
+     </xs:complexType>
+
+	<xs:complexType name="Bios">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Bio" type="tns:Bio"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Pv">
+		<xs:attribute name="otp" type="common:otp" />
+		<xs:attribute name="pin" type="common:pin" />
+	</xs:complexType>
+	
+	<xs:element name="Pid">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Demo" type="tns:Demo" minOccurs="0" />
+				<xs:element name="Bios" type="tns:Bios" minOccurs="0" />
+				<xs:element name="Pv" type="tns:Pv" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="ts" type="xs:dateTime" use="required" />
+			<xs:attribute name="ver" type="xs:string" default="1.0" />
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

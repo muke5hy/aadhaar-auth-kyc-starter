@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DISCLAIMER: The sample code or utility or tool described herein
+     is provided on an "as is" basis, without warranty of any kind.
+     UIDAI does not warrant or guarantee the individual success
+     developers may have in implementing the sample code on their
+     environment. 
+     
+     UIDAI does not warrant, guarantee or make any representations
+     of any kind with respect to the sample code and does not make
+     any representations or warranties regarding the use, results
+     of use, accuracy, timeliness or completeness of any data or
+     information relating to the sample code. UIDAI disclaims all
+     warranties, express or implied, and in particular, disclaims
+     all warranties of merchantability, fitness for a particular
+     purpose, and warranties related to the code, or any service
+     or software related thereto. 
+     
+     UIDAI is not responsible for and shall not be liable directly
+     or indirectly for any direct, indirect damages or costs of any
+     type arising out of use or any action taken by you or others
+     related to the sample code.
+     
+     THIS IS NOT A SUPPORTED SOFTWARE.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.uidai.gov.in/authentication/common/types/1.0"
+	xmlns:tns="http://www.uidai.gov.in/authentication/common/types/1.0"
+	elementFormDefault="qualified">
+
+	<xs:simpleType name="uid">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{12}"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="pin">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{6}"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="otp">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{6}"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="LicenseKey">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="200"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="Tid">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z0-9\.,-\\/():]*"></xs:pattern>
+			<xs:maxLength value="50"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Ver">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z0-9\.,-\\/():]*"></xs:pattern>
+			<xs:maxLength value="10"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Txn">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z0-9\.,-\\/():]*"></xs:pattern>
+			<xs:maxLength value="50"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="AuaCode">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z0-9]*"></xs:pattern>
+			<xs:maxLength value="10"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Geocode">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Latitude">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Longitude">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="LocationType">
+		<xs:restriction base="xs:string"> 
+			<xs:enumeration value="G"></xs:enumeration>
+			<xs:enumeration value="P"></xs:enumeration>	
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="Meta">
+		<xs:attribute name="udc"  use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="20"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="pip"  use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="60"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="fdc"  use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="10"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="idc"  use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="10"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="lot" type="tns:LocationType" use="required">
+			<xs:annotation>
+				<xs:documentation>Location Type</xs:documentation>
+			</xs:annotation>				
+		</xs:attribute>
+		<xs:attribute name="lov" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="50"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+
+
+	<xs:simpleType name="FingerPosition">
+		<xs:restriction base="xs:string">
+			<xs:annotation>
+				<xs:documentation>
+					Finger positions
+				</xs:documentation>
+			</xs:annotation>
+			<xs:enumeration value="LEFT_INDEX"></xs:enumeration>
+			<xs:enumeration value="LEFT_LITTLE"></xs:enumeration>
+			<xs:enumeration value="LEFT_MIDDLE"></xs:enumeration>
+			<xs:enumeration value="LEFT_RING"></xs:enumeration>
+			<xs:enumeration value="LEFT_THUMB"></xs:enumeration>
+			<xs:enumeration value="RIGHT_INDEX"></xs:enumeration>
+			<xs:enumeration value="RIGHT_LITTLE"></xs:enumeration>
+			<xs:enumeration value="RIGHT_MIDDLE"></xs:enumeration>
+			<xs:enumeration value="RIGHT_RING"></xs:enumeration>
+			<xs:enumeration value="RIGHT_THUMB"></xs:enumeration>
+			<xs:enumeration value="UNKNOWN"></xs:enumeration>	
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

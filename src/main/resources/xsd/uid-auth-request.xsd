@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DISCLAIMER: The sample code or utility or tool described herein
+     is provided on an "as is" basis, without warranty of any kind.
+     UIDAI does not warrant or guarantee the individual success
+     developers may have in implementing the sample code on their
+     environment. 
+     
+     UIDAI does not warrant, guarantee or make any representations
+     of any kind with respect to the sample code and does not make
+     any representations or warranties regarding the use, results
+     of use, accuracy, timeliness or completeness of any data or
+     information relating to the sample code. UIDAI disclaims all
+     warranties, express or implied, and in particular, disclaims
+     all warranties of merchantability, fitness for a particular
+     purpose, and warranties related to the code, or any service
+     or software related thereto. 
+     
+     UIDAI is not responsible for and shall not be liable directly
+     or indirectly for any direct, indirect damages or costs of any
+     type arising out of use or any action taken by you or others
+     related to the sample code.
+     
+     THIS IS NOT A SUPPORTED SOFTWARE.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.uidai.gov.in/authentication/uid-auth-request/1.0"
+	xmlns:tns="http://www.uidai.gov.in/authentication/uid-auth-request/1.0"
+	elementFormDefault="qualified"
+	xmlns:ar="http://www.uidai.gov.in/authentication/uid-auth-request-data/1.0"
+	xmlns:common="http://www.uidai.gov.in/authentication/common/types/1.0">
+
+	<xs:import namespace="http://www.uidai.gov.in/authentication/common/types/1.0"
+		schemaLocation="common-types.xsd" />
+
+	<xs:simpleType name="TknType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="001">
+				<xs:annotation>
+					<xs:documentation>Mobile number</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TknValue">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="Tkn">
+		<xs:attribute name="type" type="tns:TknType"></xs:attribute>
+		<xs:attribute name="value" type="tns:TknValue"></xs:attribute>
+	</xs:complexType>
+	
+	
+	<xs:simpleType name="UsesFlag">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="y"></xs:enumeration>
+			<xs:enumeration value="n"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="Uses">
+		<xs:attribute name="pi" use="required" type="tns:UsesFlag" />
+		<xs:attribute name="pa" use="required" type="tns:UsesFlag" />
+		<xs:attribute name="pfa" use="required" type="tns:UsesFlag" />
+		<xs:attribute name="bio" use="required" type="tns:UsesFlag" />
+		<xs:attribute name="bt" type="xs:string" />
+		<xs:attribute name="pin" use="required" type="tns:UsesFlag" />
+		<xs:attribute name="otp" use="required" type="tns:UsesFlag" />
+	</xs:complexType>
+
+	<xs:complexType name="Skey">
+		<xs:simpleContent>
+			<xs:extension base="xs:base64Binary">
+				<xs:attribute name="ci" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>
+							Certificate identifier - should be expiry date of certificate in YYYYMMDD format
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ki" type="xs:string" use="optional">
+					<xs:annotation>
+						<xs:documentation>
+							Unique key identifier
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+		
+	<xs:simpleType name="DataType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="X"></xs:enumeration>
+			<xs:enumeration value="P"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="Auth">
+		<xs:sequence>
+			<xs:element name="Tkn" type="tns:Tkn" minOccurs="0" />
+			<xs:element name="Uses" type="tns:Uses" />
+			<xs:element name="Meta" type="common:Meta" />
+			<xs:element name="Skey" type="tns:Skey" />
+			<xs:element name="Data" >
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:base64Binary">
+							<xs:attribute name="type" type="tns:DataType" default="X" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Hmac" type="xs:base64Binary" />
+		</xs:sequence>
+		
+		<xs:attribute name="uid" type="common:uid" use="required" />
+		<xs:attribute name="ac" type="common:AuaCode" use="required" />
+		<xs:attribute name="tid" type="common:Tid" use="required" />
+		<xs:attribute name="ver" type="common:Ver" />
+		<xs:attribute name="txn" type="common:Txn" use="required" />
+		<xs:attribute name="lk" type="common:LicenseKey" use="required" />
+		<xs:attribute name="sa" type="common:AuaCode" use="required" />
+	</xs:complexType>
+
+	<xs:element name="Auth" type="tns:Auth"></xs:element>
+</xs:schema>

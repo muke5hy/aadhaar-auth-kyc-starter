@@ -1,4 +1,4 @@
-package com.aadhar.resource;
+package com.tw.aadhar.resource;
 
 import in.gov.uidai.core.model.xsd.uid_auth_request_data._1.MatchingStrategy;
 import lombok.Getter;

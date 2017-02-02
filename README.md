@@ -58,12 +58,12 @@ another one for testing. We use Spring Profiles in combination with Boot feature
 loading properties files by naming convention (application-*\<profile name\>*.properties).
 
 You can find the profile constants in 
-[StarterProfiles](src/main/java/com/aadhar/StarterProfiles.java) 
+[StarterProfiles](src/main/java/com/tw/aadhar/StarterProfiles.java) 
 and the properties files in `src/main/resources`.
 
 ### Database
 The database connections are configured in 
-[DatabaseConfig](src/main/java/com/aadhar/DatabaseConfig.java)
+[DatabaseConfig](src/main/java/com/tw/aadhar/DatabaseConfig.java)
 where we can find a working H2 embedded database connection for the default profile, and the staging and production configurations examples for working with an external database.
 
 ### Repository layer

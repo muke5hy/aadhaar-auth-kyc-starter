@@ -1,7 +1,7 @@
-package com.aadhar.controller;
+package com.tw.aadhar.controller;
 
-import com.aadhar.resource.AuthRequestData;
-import com.aadhar.service.AuthService;
+import com.tw.aadhar.resource.AuthRequestData;
+import com.tw.aadhar.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -98,6 +98,7 @@ public class OtpClient {
     if (System.getenv().get("SKIP_DIGITAL_SIGNATURE") != null) {
       return otpXML.toString();
     } else {
+      System.out.println(otpXML);
       return this.digitalSignator.signXML(otpXML.toString(), includeKeyInfo);
     }
   }

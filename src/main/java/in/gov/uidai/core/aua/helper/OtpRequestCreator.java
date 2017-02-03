@@ -58,7 +58,7 @@ public class OtpRequestCreator {
 			Otp otpReq = new Otp();
 			otpReq.setUid(auaData.getUid());
 
-			otpReq.setVer("1.6");
+			otpReq.setVer("1.5");
 			otpReq.setAc(aua);
 			otpReq.setSa(sa);
 

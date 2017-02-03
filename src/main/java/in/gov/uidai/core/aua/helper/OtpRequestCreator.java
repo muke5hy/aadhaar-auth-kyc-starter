@@ -48,7 +48,7 @@ public class OtpRequestCreator {
 	 * @param aua AUA code
 	 * @param sa ASA code
 	 * @param licenseKey License key
-	 * @param auaData Data received from otp client.
+	 * `@param auaData Data received from otp client.
 	 * @return Instance of {@link Auth}
 	 */
 	public Otp createOtpRequest(String aua, String sa, String licenseKey, OtpDataFromDeviceToAUA auaData) {

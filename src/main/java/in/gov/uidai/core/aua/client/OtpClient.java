@@ -59,8 +59,8 @@ public class OtpClient {
 
   public OtpClient(URI otpServerURI) {
     this.otpServerURI = otpServerURI;
-    this.asaLicenseKey = AadhaarConstants.asaLicenseKey;
-    this.digitalSignator = AadhaarConstants.digitalSigner;
+    this.asaLicenseKey = AadhaarConstants.get().asaLicenseKey;
+    this.digitalSignator = AadhaarConstants.get().digitalSigner;
   }
 
   public OtpResponseDetails generateOtp(Otp otp) {

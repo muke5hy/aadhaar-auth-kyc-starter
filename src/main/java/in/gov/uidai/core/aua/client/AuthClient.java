@@ -80,6 +80,8 @@ public class AuthClient {
    */
   public AuthClient(URI authServerUri) {
     this.authServerURI = authServerUri;
+    this.asaLicenseKey = AadhaarConstants.get().asaLicenseKey;
+    this.digitalSignator = AadhaarConstants.get().digitalSigner;
   }
 
   /**
@@ -179,9 +181,9 @@ public class AuthClient {
 
     try {
       //String authServerURL = "http://auth.uidai.gov.in/1.6";
-      String asaLicenseKey = AadhaarConstants.asaLicenseKey;
+      String asaLicenseKey = AadhaarConstants.get().asaLicenseKey;
 //			String asaLicenseKey = "MH4hSkrev2h_Feu0lBRC8NI-iqzT299_qPSSstOFbNFTwWrie29ThDo";
-      DigitalSigner ds = AadhaarConstants.digitalSigner;
+      DigitalSigner ds = AadhaarConstants.get().digitalSigner;
 
       //AuthClient authClient = new AuthClient(new URL(authServerURL).toURI());
       this.setAsaLicenseKey(asaLicenseKey);

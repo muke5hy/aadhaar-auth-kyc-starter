@@ -2,11 +2,20 @@ package in.gov.uidai.core.aua.helper;
 
 public final class AadhaarConstants {
 
-  public static final String asaLicenseKey = "MBFWjkJHNF-fLidl8oOHtUwgL5p1ZjDbWrqsMEVEJLVEDpnlNj_CZTg";
+  public final String asaLicenseKey = "MBFWjkJHNF-fLidl8oOHtUwgL5p1ZjDbWrqsMEVEJLVEDpnlNj_CZTg";
 
-  public static DigitalSigner digitalSigner;
+  public DigitalSigner digitalSigner;
 
-  public AadhaarConstants() {
+  private static AadhaarConstants aadhaarConstants;
+
+  public static AadhaarConstants get() {
+    if (aadhaarConstants == null) {
+      aadhaarConstants = new AadhaarConstants();
+    }
+    return aadhaarConstants;
+  }
+
+  private AadhaarConstants() {
     digitalSigner = new DigitalSigner(getFileFromResource("Staging_Signature_PrivateKey.p12"), "public".toCharArray(), "public");
   }
 

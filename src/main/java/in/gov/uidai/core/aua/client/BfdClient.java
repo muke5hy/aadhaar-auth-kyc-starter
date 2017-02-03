@@ -67,8 +67,8 @@ public class BfdClient {
 
 	public BfdClient(URI bfdServerURI) {
 		this.bfdServerURI = bfdServerURI;
-		this.asaLicenseKey = AadhaarConstants.asaLicenseKey;
-		this.digitalSignator = AadhaarConstants.digitalSigner;
+		this.asaLicenseKey = AadhaarConstants.get().asaLicenseKey;
+		this.digitalSignator = AadhaarConstants.get().digitalSigner;
 	}
 	
 	public BfdResponseDetails performBfd(Bfd bfd) {

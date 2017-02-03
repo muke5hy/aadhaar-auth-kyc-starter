@@ -14,6 +14,7 @@ import in.gov.uidai.core.model.xsd.common.types._1.Meta;
 import in.gov.uidai.core.model.xsd.uid_bfd_request._1.Bfd;
 import in.gov.uidai.core.model.xsd.uid_bfd_request._1.DataType;
 import in.gov.uidai.core.model.xsd.uid_bfd_response._1.BfdRes;
+import org.bouncycastle.util.encoders.Base64;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -41,7 +42,7 @@ public class BfdClientTest {
 
       String biometricContent = "Rk1SACAyMAAAAADkAAgAyQFnAMUAxQEAAAARIQBqAGsgPgCIAG0fRwC2AG2dSQBVAIUjPABuALShMgCxAL0jMAByAM6lPgCmAN2kQQBwAN8qNAB1AN8mPADJAOcgOQA8AOorNABoAOomOQC+AO2fMQDFAPqlSgCvAP8lRQB8AQuhPABwAQ4fMgB7ASqcRADAAS4iNwCkATMeMwCFATYeNwBLATYwMQBWATcoMQCkATecMQBEATwyMgBJAUciQQCkAU8cNQB9AVQWNgCEAVUVRACoAVgYOgBBAV69NgCsAWeYNwAA";
 
-      DeviceCollectedBfdData.BiometricData biometric = new DeviceCollectedBfdData.BiometricData(FingerPosition.LEFT_THUMB, biometricContent.getBytes(), 5);
+      DeviceCollectedBfdData.BiometricData biometric = new DeviceCollectedBfdData.BiometricData(FingerPosition.LEFT_THUMB, Base64.decode(biometricContent.getBytes()), 1);
 
       DeviceCollectedBfdData bfdData = new DeviceCollectedBfdData("999999990019", asList(biometric), deviceMetaData);
 

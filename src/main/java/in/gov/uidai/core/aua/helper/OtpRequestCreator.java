@@ -24,9 +24,9 @@
  ******************************************************************************/
 package in.gov.uidai.core.aua.helper;
 
-import in.gov.uidai.core.model.xsd.otp._1.Opts;
-import in.gov.uidai.core.model.xsd.otp._1.Otp;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.Auth;
+import in.gov.uidai.core.model.xsd.otp.Opts;
+import in.gov.uidai.core.model.xsd.otp.Otp;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.Auth;
 import in.gov.uidai.core.device.model.OtpDataFromDeviceToAUA;
 import org.apache.commons.lang3.StringUtils;
 

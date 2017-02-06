@@ -24,8 +24,8 @@
  ******************************************************************************/
 package in.gov.uidai.core.device.model;
 
-import in.gov.uidai.core.model.xsd.common.types._1.Meta;
-import in.gov.uidai.core.model.xsd.uid_bfd_request._1.DataType;
+import in.gov.uidai.core.model.xsd.common.types.Meta;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request._1.DataType;
 
 
 /**

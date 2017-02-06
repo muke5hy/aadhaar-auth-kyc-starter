@@ -24,21 +24,21 @@
  ******************************************************************************/
 package in.gov.uidai.core.aua.helper;
 
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.Auth;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.DataType;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_response._1.AuthRes;
 import in.gov.uidai.core.util.HashGenerator;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.Auth;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.DataType;
-import in.gov.uidai.core.model.xsd.uid_auth_response._1.AuthRes;
 import org.apache.commons.lang3.StringUtils;
 import org.bouncycastle.util.encoders.Hex;
 
 import java.util.Date;
 
 /**
- * Helper class to validate the authentication response by validating the following:
+ * Helper class to validate the auth response by validating the following:
  * <ol>
- * 	<li>Hash of Aadhaar number from "info" attribute of authentication response</li>
- * 	<li>Hash of Demo XML from "info" attribute of authentication response</li>
- * 	<li>By interpreting the bit mask representing usage of various core element in the "info" attribute of authentication response.</li>
+ * 	<li>Hash of Aadhaar number from "info" attribute of auth response</li>
+ * 	<li>Hash of Demo XML from "info" attribute of auth response</li>
+ * 	<li>By interpreting the bit mask representing usage of various core element in the "info" attribute of auth response.</li>
  * </ol>
  * 
  * 

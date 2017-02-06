@@ -27,9 +27,9 @@ package in.gov.uidai.core.aua.client;
 import in.gov.uidai.core.aua.helper.AadhaarConstants;
 import in.gov.uidai.core.aua.helper.DigitalSigner;
 import in.gov.uidai.core.device.model.BfdResponseDetails;
-import in.gov.uidai.core.model.xsd.uid_auth_response._1.AuthRes;
-import in.gov.uidai.core.model.xsd.uid_bfd_request._1.Bfd;
-import in.gov.uidai.core.model.xsd.uid_bfd_response._1.BfdRes;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_response._1.AuthRes;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request._1.Bfd;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_response._1.BfdRes;
 import org.apache.commons.lang3.StringUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -51,7 +51,7 @@ import java.net.URI;
  * UIDAI Auth Server, and to get the response back.  Given an <code>Bfd</code> object, this
  * class (@see {@link BfdClient#performBfd(Bfd)}) will convert it to XML string, then,
  * digitally sign it, and submit it to UIDAI Auth Server using HTTP POST message.  After, 
- * receiving the resonse, this class converts the response XML into authentication response
+ * receiving the resonse, this class converts the response XML into auth response
  * @see AuthRes object  
  * 
  * 
@@ -92,7 +92,7 @@ public class BfdClient {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("Exception during authentication " + e.getMessage(), e);
+			throw new RuntimeException("Exception during auth " + e.getMessage(), e);
 		}
 	}
 
@@ -101,7 +101,7 @@ public class BfdClient {
 		StringWriter bfdXML = new StringWriter();
 
 		JAXBElement bfdElement = new JAXBElement(new QName(
-				"http://www.uidai.gov.in/authentication/uid-bfd-request/1.0", "Bfd"), Bfd.class, bfd);
+				"http://www.uidai.gov.in/auth/uid-bfd-request/1.0", "Bfd"), Bfd.class, bfd);
 		
 		JAXBContext.newInstance(Bfd.class).createMarshaller().marshal(bfdElement, bfdXML);
 		boolean includeKeyInfo = true;
@@ -125,7 +125,7 @@ public class BfdClient {
 			reader = XMLReaderFactory.createXMLReader();
 
 			//Create the filter (to add namespace) and set the xmlReader as its parent. 
-			NamespaceFilter inFilter = new NamespaceFilter("http://www.uidai.gov.in/authentication/uid-bfd-response/1.0", true); 
+			NamespaceFilter inFilter = new NamespaceFilter("http://www.uidai.gov.in/auth/uid-bfd-response/1.0", true);
 			inFilter.setParent(reader); 
 			 
 			//Prepare the input, in this case a java.io.File (output) 

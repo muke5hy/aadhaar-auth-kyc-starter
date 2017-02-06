@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.uidai.gov.in/kyc/common/types/1.0"
+	xmlns:tns="http://www.uidai.gov.in/kyc/common/types/1.0"
+	elementFormDefault="qualified">
+
+
+	<xs:simpleType name="Ver">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z0-9\.,-\\/():]*"></xs:pattern>
+			<xs:maxLength value="10"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="GenderType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="M" />
+			<xs:enumeration value="F" />
+			<xs:enumeration value="T" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="YesNoType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Y"></xs:enumeration>
+			<xs:enumeration value="N"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

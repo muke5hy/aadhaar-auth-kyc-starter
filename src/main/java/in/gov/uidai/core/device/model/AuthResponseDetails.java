@@ -24,7 +24,7 @@
  ******************************************************************************/
 package in.gov.uidai.core.device.model;
 
-import in.gov.uidai.core.model.xsd.uid_auth_response._1.AuthRes;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_response._1.AuthRes;
 
 /**
  * This class represents Auth Response.  It encapsulates the XML and its

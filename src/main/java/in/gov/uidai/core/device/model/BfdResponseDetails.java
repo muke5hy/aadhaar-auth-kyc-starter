@@ -24,7 +24,7 @@
  ******************************************************************************/
 package in.gov.uidai.core.device.model;
 
-import in.gov.uidai.core.model.xsd.uid_bfd_response._1.BfdRes;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_response._1.BfdRes;
 
 /**
  * This class represents BFD Response.  It encapsulates the XML and its

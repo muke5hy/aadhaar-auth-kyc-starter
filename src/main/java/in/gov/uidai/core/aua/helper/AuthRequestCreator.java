@@ -25,19 +25,19 @@
 package in.gov.uidai.core.aua.helper;
 
 import in.gov.uidai.core.device.model.AuthDataFromDeviceToAUA;
-import in.gov.uidai.core.model.xsd.common.types._1.Meta;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.Auth;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.Auth.Data;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.Skey;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.Tkn;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.Uses;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.Auth;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.Auth.Data;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.Skey;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.Tkn;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.Uses;
+import in.gov.uidai.core.model.xsd.common.types.Meta;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * <code>AuthRequestCreator</code> class provides a method to generate the <code>Auth</code> object
- * using information that has been received from authentication device and from the information that
+ * using information that has been received from auth device and from the information that
  * is available with AUA.
  *  
  * @author UIDAI
@@ -51,8 +51,8 @@ public class AuthRequestCreator {
 	 * @param sa AUA code
 	 * @param licenseKey License key
 	 * @param uses Uses element
-	 * @param token Token element, typically used for authentication requests received over mobile networks.
-	 * @param auaData Data received from authentication device.
+	 * @param token Token element, typically used for auth requests received over mobile networks.
+	 * @param auaData Data received from auth device.
 	 * @param metaData 
 	 * @return Instance of {@link Auth}
 	 */

@@ -33,14 +33,14 @@ import in.gov.uidai.core.device.helper.PidCreator;
 import in.gov.uidai.core.device.model.AuthDataFromDeviceToAUA;
 import in.gov.uidai.core.device.model.AuthResponseDetails;
 import in.gov.uidai.core.device.model.DeviceCollectedAuthData;
-import in.gov.uidai.core.model.xsd.common.types._1.LocationType;
-import in.gov.uidai.core.model.xsd.common.types._1.Meta;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.Auth;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.DataType;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.Uses;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.UsesFlag;
-import in.gov.uidai.core.model.xsd.uid_auth_response._1.AuthRes;
-import in.gov.uidai.core.model.xsd.uid_auth_response._1.AuthResult;
+import in.gov.uidai.core.model.xsd.common.types.LocationType;
+import in.gov.uidai.core.model.xsd.common.types.Meta;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.Auth;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.DataType;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.Uses;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.UsesFlag;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_response._1.AuthRes;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_response._1.AuthResult;
 import org.apache.commons.lang3.StringUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -62,7 +62,7 @@ import java.net.URI;
  * UIDAI Auth Server, and to get the response back.  Given an <code>Auth</code> object, this
  * class (@see {@link AuthClient#authenticate}) will convert it to XML string, then,
  * digitally sign it, and submit it to UIDAI Auth Server using HTTP POST message.  After,
- * receiving the response, this class converts the response XML into authentication response
+ * receiving the response, this class converts the response XML into auth response
  *
  * @author UIDAI
  * @see AuthRes object
@@ -76,7 +76,7 @@ public class AuthClient {
   /**
    * Constructor
    *
-   * @param authServerUri - URI of the authentication server
+   * @param authServerUri - URI of the auth server
    */
   public AuthClient(URI authServerUri) {
     this.authServerURI = authServerUri;
@@ -85,7 +85,7 @@ public class AuthClient {
   }
 
   /**
-   * Method to perform authentication
+   * Method to perform auth
    *
    * @param auth Authentication request
    * @return Authentication response
@@ -109,7 +109,7 @@ public class AuthClient {
       return new AuthResponseDetails(responseXML, parseAuthResponseXML(responseXML));
     } catch (Exception e) {
       e.printStackTrace();
-      throw new RuntimeException("Exception during authentication " + e.getMessage(), e);
+      throw new RuntimeException("Exception during auth " + e.getMessage(), e);
     }
   }
 
@@ -118,7 +118,7 @@ public class AuthClient {
     StringWriter authXML = new StringWriter();
 
     JAXBElement authElement = new JAXBElement(new QName(
-        "http://www.uidai.gov.in/authentication/uid-auth-request/1.0", "Auth"), Auth.class, auth);
+        "http://www.uidai.gov.in/auth/uid-auth-request/1.0", "Auth"), Auth.class, auth);
 
     JAXBContext.newInstance(Auth.class).createMarshaller().marshal(authElement, authXML);
     boolean includeKeyInfo = true;
@@ -142,7 +142,7 @@ public class AuthClient {
       reader = XMLReaderFactory.createXMLReader();
 
       //Create the filter (to add namespace) and set the xmlReader as its parent.
-      NamespaceFilter inFilter = new NamespaceFilter("http://www.uidai.gov.in/authentication/uid-auth-response/1.0", true);
+      NamespaceFilter inFilter = new NamespaceFilter("http://www.uidai.gov.in/auth/uid-auth-response/1.0", true);
       inFilter.setParent(reader);
 
       //Prepare the input, in this case a java.io.File (output)

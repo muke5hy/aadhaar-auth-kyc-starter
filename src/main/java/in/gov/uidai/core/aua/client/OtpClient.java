@@ -27,8 +27,8 @@ package in.gov.uidai.core.aua.client;
 import in.gov.uidai.core.aua.helper.AadhaarConstants;
 import in.gov.uidai.core.aua.helper.DigitalSigner;
 import in.gov.uidai.core.device.model.OtpResponseDetails;
-import in.gov.uidai.core.model.xsd.otp._1.Otp;
-import in.gov.uidai.core.model.xsd.otp._1.OtpRes;
+import in.gov.uidai.core.model.xsd.otp.Otp;
+import in.gov.uidai.core.model.xsd.otp.OtpRes;
 import org.apache.commons.lang3.StringUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
@@ -90,7 +90,7 @@ public class OtpClient {
     StringWriter otpXML = new StringWriter();
 
     JAXBElement element = new JAXBElement(new QName(
-        "http://www.uidai.gov.in/authentication/otp/1.6", "Otp"), Otp.class, otp);
+        "http://www.uidai.gov.in/auth/otp/1.6", "Otp"), Otp.class, otp);
 
     JAXBContext.newInstance(Otp.class).createMarshaller().marshal(element, otpXML);
     boolean includeKeyInfo = true;
@@ -115,7 +115,7 @@ public class OtpClient {
       reader = XMLReaderFactory.createXMLReader();
 
       //Create the filter (to add namespace) and set the xmlReader as its parent.
-      NamespaceFilter inFilter = new NamespaceFilter("http://www.uidai.gov.in/authentication/otp/1.6", true);
+      NamespaceFilter inFilter = new NamespaceFilter("http://www.uidai.gov.in/auth/otp/1.6", true);
       inFilter.setParent(reader);
 
       //Prepare the input, in this case a java.io.File (output)

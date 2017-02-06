@@ -24,8 +24,8 @@
  ******************************************************************************/
 package in.gov.uidai.core.device.model;
 
-import in.gov.uidai.core.model.xsd.common.types._1.FingerPosition;
-import in.gov.uidai.core.model.xsd.common.types._1.Meta;
+import in.gov.uidai.core.model.xsd.common.types.FingerPosition;
+import in.gov.uidai.core.model.xsd.common.types.Meta;
 
 import java.io.Serializable;
 import java.util.List;

@@ -24,7 +24,7 @@
  ******************************************************************************/
 package in.gov.uidai.core.device.model;
 
-import in.gov.uidai.core.model.xsd.otp._1.OtpRes;
+import in.gov.uidai.core.model.xsd.otp.OtpRes;
 
 /**
  * This class represents Otp Response.  It encapsulates the XML and its

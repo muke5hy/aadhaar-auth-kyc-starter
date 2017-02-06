@@ -25,17 +25,17 @@
 package in.gov.uidai.core.aua.helper;
 
 import in.gov.uidai.core.device.model.BFDDataFromDeviceToAUA;
-import in.gov.uidai.core.model.xsd.common.types._1.Meta;
-import in.gov.uidai.core.model.xsd.uid_bfd_request._1.Bfd;
-import in.gov.uidai.core.model.xsd.uid_bfd_request._1.Bfd.Data;
-import in.gov.uidai.core.model.xsd.uid_bfd_request._1.Skey;
+import in.gov.uidai.core.model.xsd.common.types.Meta;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request._1.Bfd;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request._1.Bfd.Data;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request._1.Skey;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * <code>AuthRequestCreator</code> class provides a method to generate the <code>Auth</code> object
- * using information that has been received from authentication device and from the information that
+ * using information that has been received from auth device and from the information that
  * is available with AUA.
  *  
  * @author UIDAI

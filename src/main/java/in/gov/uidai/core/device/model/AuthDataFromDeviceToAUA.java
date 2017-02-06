@@ -24,12 +24,12 @@
  ******************************************************************************/
 package in.gov.uidai.core.device.model;
 
-import in.gov.uidai.core.model.xsd.common.types._1.Meta;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.DataType;
+import in.gov.uidai.core.model.xsd.common.types.Meta;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.DataType;
 
 /**
  * This class represents the information that typically needs to be 
- * transferred by an authentication device to AUA server. 
+ * transferred by an auth device to AUA server.
  * 
  * @author UIDAI
  *
@@ -52,14 +52,14 @@ public class AuthDataFromDeviceToAUA {
 	/**
 	 * Constructor
 	 * @param uid - Aadhaar number.
-	 * @param terminalId - Id of the authentication device.
+	 * @param terminalId - Id of the auth device.
 	 * @param encryptedPid - Encrypted Pid XML, that has been encrypted using session key.
 	 * @param encrytpedHmac - Encrypted HMAC of Pid XML string, that has been encrypted using session key.
-	 * @param encryptedSkey - Session key that has been encrypted using UIDAI public certificate.
+	 * @param hashedDemoBytes - Session key that has been encrypted using UIDAI public certificate.
 	 * @param certificateIdentifier - Certificate identifier, expiry date of UIDAI public certificate in YYYYMMDD format.
 	 * @param dataType - Type of PID (X or P)
-	 * @param keyIdentifer - Value of "ki" attribute if using Synchronized Session Key, else null
-	 * @param sskRandom - Value of 20 byte random number if using Synchronized Session Key is being used, and a randome is being used in give transaction. Else, value is null.
+//	 * @param keyIdentifer - Value of "ki" attribute if using Synchronized Session Key, else null
+//	 * @param sskRandom - Value of 20 byte random number if using Synchronized Session Key is being used, and a randome is being used in give transaction. Else, value is null.
 	 */
 	public AuthDataFromDeviceToAUA(String uid, String terminalId, SessionKeyDetails sessionKeyDetails, byte[] encryptedPid, byte[] encrytpedHmac,
 			byte[] hashedDemoBytes, String certificateIdentifier, DataType dataType, Meta meta) {

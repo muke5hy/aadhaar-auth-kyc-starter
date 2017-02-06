@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		DISCLAIMER: The sample code or utility or tool described herein is
+		provided on an "as is" basis, without warranty of any kind. UIDAI does
+		not warrant or guarantee the individual success developers may have in
+		implementing the sample code on their environment. UIDAI does not
+		warrant, guarantee or make any representations of any kind with
+		respect to the sample code and does not make any representations or
+		warranties regarding the use, results of use, accuracy, timeliness or
+		completeness of any data or information relating to the sample code.
+		UIDAI disclaims all warranties, express or implied, and in particular,
+		disclaims all warranties of merchantability, fitness for a particular
+		purpose, and warranties related to the code, or any service or
+		software related thereto. UIDAI is not responsible for and shall not
+		be liable directly or indirectly for any direct, indirect damages or
+		costs of any type arising out of use or any action taken by you or
+		others related to the sample code. THIS IS NOT A SUPPORTED SOFTWARE.
+	-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.uidai.gov.in/kyc/uid-kyc-response/1.0"
+	xmlns:tns="http://www.uidai.gov.in/kyc/uid-kyc-response/1.0"
+	elementFormDefault="qualified" xmlns:common="http://www.uidai.gov.in/kyc/common/types/1.0">
+	<xs:import namespace="http://www.uidai.gov.in/kyc/common/types/1.0"
+		schemaLocation="common-types-kyc.xsd"></xs:import>
+
+	<xs:element name="KycRes" type="tns:KycRes"></xs:element>
+	<xs:element name="Resp" type="tns:Resp"></xs:element>
+	<xs:complexType name="Resp">
+		<xs:sequence maxOccurs="1" minOccurs="0">
+			<xs:element name="kycRes" type="xs:base64Binary"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="status" type="xs:string"></xs:attribute>
+		<xs:attribute name="ko" type="xs:string"></xs:attribute>			
+		<xs:attribute name="ret" type="common:YesNoType"></xs:attribute>
+		<xs:attribute name="code" type="xs:string"></xs:attribute>
+		<xs:attribute name="txn" type="xs:string"></xs:attribute>
+		<xs:attribute name="ts" type="xs:dateTime"></xs:attribute>
+		<xs:attribute name="err" type="xs:string"></xs:attribute>
+		
+		
+	</xs:complexType>
+
+	<xs:complexType name="KycRes">
+		<xs:sequence maxOccurs="1" minOccurs="0">
+			<xs:element name="Rar" type="xs:base64Binary"></xs:element>
+			<xs:element name="UidData" type="tns:UidDataType"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="ret" type="common:YesNoType"></xs:attribute>
+		<xs:attribute name="code" type="xs:string"></xs:attribute>
+		<xs:attribute name="txn" type="xs:string"></xs:attribute>
+		<xs:attribute name="ts" type="xs:dateTime"></xs:attribute>
+		<xs:attribute name="ttl" type="xs:string"></xs:attribute>
+		<xs:attribute name="err" type="xs:string"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="UidDataType">
+		<xs:sequence>
+			<xs:element name="Poi" type="tns:PoiType"></xs:element>
+			<xs:element name="Poa" type="tns:PoaType"></xs:element>
+			<xs:element name="LData" type="tns:LDataType"></xs:element>
+			<xs:element name="Pht" type="xs:base64Binary"></xs:element>
+			<xs:element name="Prn" type="tns:PrnType"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="uid" type="xs:string"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="PrnType">
+	<xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute name="type" type="xs:string"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="PoiType">
+		<xs:attribute name="name" type="xs:string"></xs:attribute>
+		<xs:attribute name="dob" type="xs:string"></xs:attribute>
+		<xs:attribute name="gender" type="common:GenderType"></xs:attribute>
+		<xs:attribute name="phone" type="xs:string"></xs:attribute>
+		<xs:attribute name="email" type="xs:string"></xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="PoaType">
+		<xs:attribute name="co" type="xs:string"></xs:attribute>
+		<xs:attribute name="house" type="xs:string"></xs:attribute>
+		<xs:attribute name="street" type="xs:string"></xs:attribute>		
+		<xs:attribute name="lm" type="xs:string"></xs:attribute>
+		<xs:attribute name="loc" type="xs:string"></xs:attribute>
+		<xs:attribute name="vtc" type="xs:string"></xs:attribute>
+		<xs:attribute name="subdist" type="xs:string"></xs:attribute>
+		<xs:attribute name="dist" type="xs:string"></xs:attribute>
+		<xs:attribute name="state" type="xs:string"></xs:attribute>
+		<xs:attribute name="country" type="xs:string"></xs:attribute>
+		<xs:attribute name="pc" type="xs:string"></xs:attribute>
+		<xs:attribute name="po" type="xs:string"></xs:attribute>
+		<xs:attribute name="vtcCode" type="xs:string"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="LDataType">
+		<xs:attribute name="lang" type="xs:string"></xs:attribute>
+		<xs:attribute name="name" type="xs:string"></xs:attribute>
+		<xs:attribute name="co" type="xs:string"></xs:attribute>
+		<xs:attribute name="house" type="xs:string"></xs:attribute>
+		<xs:attribute name="street" type="xs:string"></xs:attribute>
+		<xs:attribute name="lm" type="xs:string"></xs:attribute>
+		<xs:attribute name="loc" type="xs:string"></xs:attribute>
+		<xs:attribute name="vtc" type="xs:string"></xs:attribute>
+		<xs:attribute name="subdist" type="xs:string"></xs:attribute>
+		<xs:attribute name="dist" type="xs:string"></xs:attribute>
+		<xs:attribute name="state" type="xs:string"></xs:attribute>
+		<xs:attribute name="pc" type="xs:string"></xs:attribute>
+		<xs:attribute name="po" type="xs:string"></xs:attribute>
+	</xs:complexType>
+
+</xs:schema>

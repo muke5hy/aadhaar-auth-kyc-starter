@@ -28,9 +28,9 @@ import com.google.protobuf.ByteString;
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import in.gov.uidai.core.device.model.DeviceCollectedBfdData;
 import in.gov.uidai.core.model.protobuf.bfd.Bfd;
-import in.gov.uidai.core.model.xsd.uid_bfd_request_data._1.BfdBio;
-import in.gov.uidai.core.model.xsd.uid_bfd_request_data._1.BfdBios;
-import in.gov.uidai.core.model.xsd.uid_bfd_request_data._1.Rbd;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request_data._1.BfdBio;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request_data._1.BfdBios;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request_data._1.Rbd;
 import in.gov.uidai.core.model.protobuf.bfd.Bfd.FingerPosition;
 import in.gov.uidai.core.model.protobuf.bfd.Bfd.Rbd.Builder;
 

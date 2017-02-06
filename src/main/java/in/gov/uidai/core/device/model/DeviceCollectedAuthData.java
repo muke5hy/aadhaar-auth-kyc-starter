@@ -24,11 +24,11 @@
  ******************************************************************************/
 package in.gov.uidai.core.device.model;
 
-import in.gov.uidai.core.model.xsd.common.types._1.Meta;
-import in.gov.uidai.core.model.xsd.uid_auth_request._1.DataType;
-import in.gov.uidai.core.model.xsd.uid_auth_request_data._1.BioMetricType;
-import in.gov.uidai.core.model.xsd.uid_auth_request_data._1.BiometricPosition;
-import in.gov.uidai.core.model.xsd.uid_auth_request_data._1.MatchingStrategy;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request._1.DataType;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request_data._1.BioMetricType;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request_data._1.BiometricPosition;
+import in.gov.uidai.core.model.xsd.auth.uid_auth_request_data._1.MatchingStrategy;
+import in.gov.uidai.core.model.xsd.common.types.Meta;
 
 import java.io.Serializable;
 import java.util.List;

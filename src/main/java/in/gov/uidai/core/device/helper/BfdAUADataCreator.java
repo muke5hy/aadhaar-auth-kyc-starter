@@ -28,9 +28,9 @@ import in.gov.uidai.core.device.model.BFDDataFromDeviceToAUA;
 import in.gov.uidai.core.device.model.SessionKeyDetails;
 import in.gov.uidai.core.util.HashGenerator;
 import in.gov.uidai.core.model.protobuf.bfd.Bfd;
-import in.gov.uidai.core.model.xsd.common.types._1.Meta;
-import in.gov.uidai.core.model.xsd.uid_bfd_request._1.DataType;
-import in.gov.uidai.core.model.xsd.uid_bfd_request_data._1.Rbd;
+import in.gov.uidai.core.model.xsd.common.types.Meta;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request._1.DataType;
+import in.gov.uidai.core.model.xsd.bfd.uid_bfd_request_data._1.Rbd;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

@@ -4,10 +4,10 @@ import in.gov.uidai.core.aua.helper.AadhaarConstants;
 import in.gov.uidai.core.aua.helper.OtpRequestCreator;
 import in.gov.uidai.core.device.model.OtpDataFromDeviceToAUA;
 import in.gov.uidai.core.device.model.OtpResponseDetails;
-import in.gov.uidai.core.model.xsd.common.types._1.LocationType;
-import in.gov.uidai.core.model.xsd.common.types._1.Meta;
-import in.gov.uidai.core.model.xsd.otp._1.Otp;
-import in.gov.uidai.core.model.xsd.otp._1.OtpRes;
+import in.gov.uidai.core.model.xsd.common.types.LocationType;
+import in.gov.uidai.core.model.xsd.common.types.Meta;
+import in.gov.uidai.core.model.xsd.otp.Otp;
+import in.gov.uidai.core.model.xsd.otp.OtpRes;
 import org.junit.Test;
 
 import java.net.URL;
@@ -43,10 +43,5 @@ public class OtpClientTest {
       e.printStackTrace();
     }
   }
-
-  private String getFileFromResource(String fileName) {
-    return this.getClass().getClassLoader().getResource(fileName).getFile();
-  }
-
 
 }

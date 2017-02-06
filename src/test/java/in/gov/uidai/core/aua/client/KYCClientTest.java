@@ -78,7 +78,7 @@ public class KYCClientTest {
       usesElement.setPin(UsesFlag.N);
       usesElement.setBt("FMR");
 
-      String asaLicenseKey = AadhaarConstants.get().asaLicenseKey;
+      String asaLicenseKey = AadhaarConstants.get().auaLicenseKey;
 
       Auth auth = authRequestCreator.createAuthRequest("public", "public", asaLicenseKey,
           usesElement, null, auaData, authData.getDeviceMetaData());

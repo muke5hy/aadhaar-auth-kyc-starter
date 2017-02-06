@@ -2,7 +2,9 @@ package in.gov.uidai.core.aua.helper;
 
 public final class AadhaarConstants {
 
-  public final String asaLicenseKey = "MBFWjkJHNF-fLidl8oOHtUwgL5p1ZjDbWrqsMEVEJLVEDpnlNj_CZTg";
+  public final String asaLicenseKey = "MH4hSkrev2h_Feu0lBRC8NI-iqzT299_qPSSstOFbNFTwWrie29ThDo";
+
+  public final String auaLicenseKey = "MBFWjkJHNF-fLidl8oOHtUwgL5p1ZjDbWrqsMEVEJLVEDpnlNj_CZTg";
 
   public DigitalSigner digitalSigner;
 

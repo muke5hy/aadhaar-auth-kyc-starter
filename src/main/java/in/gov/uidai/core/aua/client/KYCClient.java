@@ -57,6 +57,7 @@ import java.util.GregorianCalendar;
  * @author UIDAI
  */
 public class KYCClient {
+
   private URI kycServerURI = null;
 
   public static final String SLASH = "/";
@@ -65,21 +66,31 @@ public class KYCClient {
   private DigitalSigner digitalSignator;
   private DataDecryptor dataDecryptor;
   public static final String ISO_8601_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
-  private static final String SIGNATURE_PASSWORD = "ENC(zQLsIClQqL77HZr82BMYSg\\=\\=\\r\\n)";
+  private static final String SIGNATURE_PASSWORD = "public";
+  private String encrpytXml;
 
   public KYCClient(URI kycServerURI) {
     this.kycServerURI = kycServerURI;
-    this.asaLicenseKey = AadhaarConstants.get().asaLicenseKey;
+    this.asaLicenseKey = AadhaarConstants.get().auaLicenseKey;
     this.digitalSignator = AadhaarConstants.get().digitalSigner;
     this.dataDecryptor = new DataDecryptor(getFileFromResource("Staging_Signature_PrivateKey.p12"), SIGNATURE_PASSWORD.toCharArray(), getFileFromResource("uidai_auth_stage.cer"));
   }
 
   // Changed for Mobile/Email ID consent and Local  Language required Consent
-  String mecType;
-  String lrType;
-  String deType;
+  String mecType = "N";
+  String lrType = "N";
+  String deType = "N";
   String pfr = "";     //new field added Pfr (Pdf form required)
   String ver = "";
+
+  public String getEncrpytXml() {
+    return encrpytXml;
+  }
+
+  public void setEncrpytXml(String encrpytXml) {
+    this.encrpytXml = encrpytXml;
+  }
+
 
   public String kycTrans(Auth auth, String kua, boolean isRcReceived,
                          String ksaLicense, Uses usesElement, String customXML
@@ -158,8 +169,8 @@ public class KYCClient {
         kycSignedXML = generateSignedKycXML(updatedCustomKYCXML);
       }
 
-      String uriString = kycServerURI + SLASH + kua + SLASH + "1" + SLASH + "0" + SLASH
-          + ksaLicense;
+      String uriString = kycServerURI.toString() + (kycServerURI.toString().endsWith("/") ? "" : "/")
+          + kua + "/" + auth.getUid().charAt(0) + "/" + auth.getUid().charAt(1) + SLASH + ksaLicense;
 
       String responseXML = HttpClientHelper.postAndGetResponse(uriString, kycSignedXML);
 

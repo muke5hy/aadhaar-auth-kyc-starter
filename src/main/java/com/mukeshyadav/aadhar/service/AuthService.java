@@ -1,7 +1,6 @@
-package com.tw.aadhar.service;
+package com.mukeshyadav.aadhar.service;
 
-import com.tw.aadhar.resource.AuthRequestData;
-import com.tw.aadhar.resource.AuthRequestData;
+import com.mukeshyadav.aadhar.resource.AuthRequestData;
 import in.gov.uidai.core.aua.client.AuthClient;
 import in.gov.uidai.core.device.model.DeviceCollectedAuthData;
 import org.springframework.stereotype.Service;

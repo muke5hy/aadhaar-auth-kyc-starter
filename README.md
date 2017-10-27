@@ -6,7 +6,7 @@ Maven and Webpack as build tools, hot reloading on both sides and without xml co
 ## Quickstart
 To run the app you just need to:
 
-    git clone https://github.com/dlizarra/spring-boot-react-webpack-starter.git ./starter
+    git clone https://github.com/muke5hy/aadhaar-auth-kyc-starter.git ./starter
     cd starter
     mvn spring-boot:run
 
@@ -58,12 +58,12 @@ another one for testing. We use Spring Profiles in combination with Boot feature
 loading properties files by naming convention (application-*\<profile name\>*.properties).
 
 You can find the profile constants in 
-[StarterProfiles](src/main/java/com/tw/aadhar/StarterProfiles.java) 
+[StarterProfiles](src/main/java/com/mukeshyadav/aadhar/StarterProfiles.java) 
 and the properties files in `src/main/resources`.
 
 ### Database
 The database connections are configured in 
-[DatabaseConfig](src/main/java/com/tw/aadhar/DatabaseConfig.java)
+[DatabaseConfig](src/main/java/com/mukeshyadav/aadhar/DatabaseConfig.java)
 where we can find a working H2 embedded database connection for the default profile, and the staging and production configurations examples for working with an external database.
 
 ### Repository layer
